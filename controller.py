@@ -2,6 +2,8 @@ from data_import import data_import
 from data_export import data_export
 from data_print import data_print
 import data_search as fc
+import log as lg
+
 
 def input_data():
     last_name = input("Введите фамилию: ")
@@ -23,13 +25,15 @@ def choice_todo():
     
     ch = input("Введите цифру: ")
     if ch == '1':
+        lg.logging.info('Пользователь завел контакт')
         sep = choice_sep()
         data_import(input_data(), sep)
     
     elif ch == '2':
+        lg.logging.info('Пользователь экспортировал справочник')
         data_print(data_export())
     
     elif ch == '3':
+        lg.logging.info('Пользователь осуществлял поиск контакта')
         line = fc.find()
-        data_print(line)
-   
+        print(line)
